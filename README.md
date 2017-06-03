@@ -1,16 +1,38 @@
-GAIA Data Parser + WebGl Viewer using Node.js
+# GAIA WebGL
+## Setup
 
-Packages used:
-	-express 		(http server)
-	-socketio 		(node websocket API)
-	-csv 			(csv parser)
-	-concat-stream	(function to concat arrays from a stream into a single object)
-	-cluster		(multicore processing for csv's)
+GaiaWebGL requires [Node.js](https://nodejs.org/) v4+ to run.
 
-To setup:
-	-install relevant packages (see above)
-	-put all your GAIA source files (csv format) into the gaia_sources folder
-	-run gaia.js to parse the files into float32Array binaries, this will take a very long time due to the size of the GAIA archive. Can be paused / restarted at any time and progress will be saved
-	-run fileConcat.js to merge the float32 binaries into a single file
-	-run server.js once gaia.js has finished process the GAIA archive
-	-finally, access your servers IP in a WebGL compatible browser
+Install  dependencies
+
+```sh
+$ npm install express
+$ npm install socketio
+$ npm install csv
+$ npm install concat-stream
+$ npm install cluster
+$ npm install pm2
+```
+Place your GAIA sources files (csv format) into the *gaia_sources* folder
+
+Run gaia.js to parse each csv file into its own new file containing a floatArray32 buffer 
+```sh
+$ node gaia.js
+```
+
+(noet that this program can be paused an restarted at will and progress will not be lost as completed files will move to a new folder, this step will take a long time and could be for a few hours at a time)
+
+Run fileConcat.js to mergre the Arrays to a single file
+```sh
+$ node fileConcat.js
+```
+
+## Running the Server
+
+Start the server using pm2 process mananger
+```sh
+$ pm2 start server.js
+```
+
+visit page in webbrowser at https://localhost
+
