@@ -1,25 +1,5 @@
 let cluster = require('cluster')
 let fs = require('fs');
-let express = require('express')
-
-
-let app = express()
-app.use(express.static(__dirname + '/public'));
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'ejs');
-
-app.get('/', function(req, res) {
-  res.render('index.html');
-});
-
-console.log("Starting Gaia Star Map Server!");
-
-let server = app.listen(80, function() {
-  const host = server.address().address;
-  const port = server.address().port;
-});
-
 
 if (cluster.isMaster) {
 	fs.readdir("gaia_results", (err, files)=>{ 
