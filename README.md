@@ -20,7 +20,7 @@ Run gaia.js to parse each csv file into its own new file containing a floatArray
 $ node gaia.js
 ```
 
-(noet that this program can be paused an restarted at will and progress will not be lost as completed files will move to a new folder, this step will take a long time and could be for a few hours at a time)
+(note that this program can be paused an restarted at will and progress will not be lost as completed files will move to a new folder, this step could take several hours)
 
 Run fileConcat.js to mergre the Arrays to a single file
 ```sh
