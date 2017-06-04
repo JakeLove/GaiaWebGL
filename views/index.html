@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset=utf-8>
+<head>
+	<meta charset=utf-8>
 
-		<title>Gaia Star Map</title>
+	<title>Gaia Star Map</title>
 
-		<link href='https://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
-		<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-	</head>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+</head>
 
-	<body>
-		<div id='welcome'>
-			<div id='title'>
-				<p>GAIA STAR MAP</p>
-				<p id='loadmessage'>LOADING...</p>
-			</div>
-
-			<div id="barContainer">
-				<div id="bar">
-				</div>
-			</div>
+<body>
+	<div id='welcome'>
+		<div id='title'>
+			<p>GAIA STAR MAP</p>
+			<p id='loadmessage'>LOADING...</p>
 		</div>
 
-		<script type="text/javascript" src="js/orbitControl.js"></script>
-		<script type="text/javascript" src="js/ui.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
-	</body>
+		<div id="barContainer">
+			<div id="bar">
+			</div>
+		</div>
+	</div>
+
+	<div id='settingsBox'>
+		<div>
+			<p id=settingsTitle style="top=5px;">Settings</p>
+		</div>
+
+		<div class=menuContainer>
+			<div class='line'>
+				<label><input type="checkbox" id="planetarium" onclick="app.switchMode()"/>Planetarium Mode</label>
+			</div>
+			
+			<div class='line'>
+				<label id='about'>A view of ESA's GAIA dataset using Node & THREE.js. All code behind the project can be found on my Github <a href="https://github.com/JakeLove/GaiaWebGL" rel="noopener noreferrer" target="_blank">here</a> availiable under MIT license</label>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/orbitControl.js"></script>
+	<script type="text/javascript" src="js/ui.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
 
 </html>
