@@ -15,12 +15,17 @@ class HUD {
     this.texts.push(new Text3D('Celestial Equator', new THREE.Vector3(0, r, 50000)))
     this.texts.push(new Text3D('Ecliptic', new THREE.Vector3(0, -r, 500000)))
     this.texts.push(new Text3D('Ecliptic', new THREE.Vector3(0, r, -450000)))
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     this.coordinateLabel = new Text3D('ra , dec', new THREE.Vector3(0, 0, 0))
     this.coordinateLabel.setScreenPosition(20, 20)
     this.coordinateLabel.DOMelement.style.top = 'auto'
     this.coordinateLabel.DOMelement.style.bottom = '20px'
     this.coordinateLabel.hidden = true
+<<<<<<< Updated upstream
     
     document.addEventListener('mousemove', function(e){
       let x = (event.clientX / window.innerWidth) * 2 - 1
@@ -46,12 +51,40 @@ class HUD {
     
     //right ascenion lines (0.0001 stops floating point errors)
     for(let theta = Math.PI / 18; theta < Math.PI - 0.0001; theta = theta + Math.PI / 18) {
+=======
+
+    document.addEventListener('mousemove', function(e) {
+      let x = (event.clientX / window.innerWidth) * 2 - 1
+      let y = -(event.clientY / window.innerHeight) * 2 + 1
+
+      var v = new THREE.Vector3(x, y, -1)
+      v.unproject(camera);
+
+      const theta = Math.acos(v.z / Math.sqrt(Math.pow(v.x, 2) + Math.pow(v.y, 2) + Math.pow(v.z, 2)))
+      const phi = Math.atan2(v.y, v.x)
+
+      scope.coordinateLabel.DOMelement.innerHTML = "RA: " + (Math.round(100 * phi * 180 / Math.PI) / 100).toFixed(2) + " DEC: " + (Math.round(100 * theta * -180 / Math.PI + 90) / 100).toFixed(2)
+    })
+
+    this.equator = this.createEllipse(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, 0), r, 0xe8c03e)
+    this.ecliptic = this.createEllipse(new THREE.Vector3(0, 0, 0), new THREE.Vector3(-23.4 * Math.PI / 180, 0, 0), r, 0xff1e5a)
+    this.celestialMeridian = this.createEllipse(new THREE.Vector3(0, 0, 0), new THREE.Vector3(Math.PI / 2, 0, 0), r, 0x5988ff)
+    this.scene.add(this.equator)
+    this.scene.add(this.ecliptic)
+    this.scene.add(this.celestialMeridian)
+
+    this.ticks = []
+
+    //right ascenion lines (0.0001 stops floating point errors)
+    for (let theta = Math.PI / 18; theta < Math.PI - 0.0001; theta = theta + Math.PI / 18) {
+>>>>>>> Stashed changes
       let tick = this.createEllipse(new THREE.Vector3(0, 0, 0), new THREE.Vector3(Math.PI / 2, 0, theta), r, 0x42ffc0)
       tick.material.transparent = true
       tick.material.opacity = 0.4
       this.scene.add(tick)
       this.ticks.push(tick)
     }
+<<<<<<< Updated upstream
     
     for(let theta = -Math.PI / 2; theta < Math.PI / 2; theta = theta + Math.PI / 18) {
       const sign = theta < 0 ? 1 : -1
@@ -65,36 +98,75 @@ class HUD {
     }
   }  
   
+=======
+
+    for (let theta = -Math.PI / 2; theta < Math.PI / 2; theta = theta + Math.PI / 18) {
+      if (theta !== 0) {
+        const sign = theta < 0 ? 1 : -1
+        const h = r * Math.cos(theta) * sign
+        const ellipseRadius = r * Math.sin(theta)
+        let tick = this.createEllipse(new THREE.Vector3(0, 0, h), new THREE.Vector3(0, 0, 0), ellipseRadius, 0x42ffc0)
+        tick.material.transparent = true
+        tick.material.opacity = 0.4
+        this.scene.add(tick)
+        this.ticks.push(tick)
+      }
+
+    }
+  }
+
+>>>>>>> Stashed changes
   hide() {
     for (let i = 0; i < this.texts.length; ++i) {
       this.texts[i].hidden = true
     }
     this.coordinateLabel.DOMelement.style.display = 'none'
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     this.equator.visible = false
     this.ecliptic.visible = false
     this.celestialMeridian.visible = false
     for (let i = 0; i < this.ticks.length; ++i) {
       this.ticks[i].visible = false
     }
+<<<<<<< Updated upstream
     
   }
   
   show(){
+=======
+
+  }
+
+  show() {
+>>>>>>> Stashed changes
     for (let i = 0; i < this.texts.length; ++i) {
       this.texts[i].hidden = false
     }
     this.coordinateLabel.DOMelement.style.display = 'block'
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     this.equator.visible = true
     this.ecliptic.visible = true
     this.celestialMeridian.visible = true
     for (let i = 0; i < this.ticks.length; ++i) {
       this.ticks[i].visible = true
     }
+<<<<<<< Updated upstream
     
   }  
  
+=======
+
+  }
+
+>>>>>>> Stashed changes
   createEllipse(center, rotation, radius, colour) {
     const ellipseCurve = new THREE.EllipseCurve(0, 0, radius - radius / 20, radius - 5000, 0, 2 * Math.PI, false, 0)
     const path = new THREE.Path(ellipseCurve.getPoints(90))
@@ -115,7 +187,11 @@ class HUD {
     for (let i = 0; i < this.texts.length; ++i) {
       this.texts[i].projectPosition(camera)
     }
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     this.coordinateLabel.innerHTML = ""
   }
 }
@@ -134,7 +210,11 @@ class Text3D {
     this.DOMelement.style.color = "whitesmoke"
     this.DOMelement.style.fontSize = "14pt"
     this.DOMelement.style.overflow = 'hidden'
+<<<<<<< Updated upstream
     //this.DOMelement.style.fontFamily = "Arial"
+=======
+      //this.DOMelement.style.fontFamily = "Arial"
+>>>>>>> Stashed changes
     this.DOMelement.innerHTML = this.text
 
     this.setScreenPosition(0, 0)
@@ -172,4 +252,8 @@ class Text3D {
 
     this.setScreenPosition(vector.x, vector.y)
   }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
