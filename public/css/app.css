@@ -1,5 +1,7 @@
 html {
+  font-family: "Courier New";
   overflow: hidden;
+  color: whitesmoke;
 }
 
 body {
@@ -10,72 +12,58 @@ input {
   vertical-align: -2px;
 }
 
-a {
-  color: whitesmoke;
+p {
+  font-size: 11pt;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 label {
-  font-family: "Courier New";
-  font-size: 14pt;
-}
-
-/* Hover Menus */
-
-#settingsBox {
-  position: absolute;
-  opacity: 0;
-  top: 8px;
-  left: 8px;
-  width: 50px;
-  height: 47px;
-  transition: all ease-out 0.15s;
-  background-color: transparent;
-  border-radius: 7px;
-  z-index: 2;
-}
-
-#settingsBox:hover {
-  width: 220px;
-  height: 280px;
-  opacity: 1;
-  background-color: rgba(25, 25, 25, 0.8);
-}
-
-#settingsBox:hover .menuContainer {
   display: block;
 }
 
-#settingsTitle {
-  position: relative;
-  font-family: "Courier New";
-  font-size: 22pt;
-  top: -20px;
-  left: 10px;
-  color: whitesmoke;
+
+.hoverMenu {
+  opacity: 0;
+  background-color: transparent;
+  width: 225px;
+  height: 20px;
+  z-index: 2;
+  overflow: hidden;
+  
+  border-radius: 7px;
+  
+  padding: 10px;
+  padding-top: 5px;
 }
 
-.menuContainer {
-  display: none;
-  margin: none;
-  padding: none;
-  border: none;
+.hoverMenu:hover {
+  background-color: rgba(50, 50, 50, 0.8);
+  height: auto;
 }
 
-.line {
-  position: relative;
-  width: 200px;
-  top: -35px;
-  margin-left: 8px;
-  margin-bottom: 8px;
-  font-size: 16pt;
-  color: whitesmoke;
+#settings {
+  position: absolute;
+  top: 10px;
+  left: 260px;
+  
+  width: auto;
 }
 
 #about {
-  font-size: 11pt
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
-
-/* Loading Screen */
 
 #loadmessage {
   font-size: 12pt;
@@ -88,12 +76,7 @@ label {
   font-family: 'Lato', sans-serif;
   font-variant: small-caps;
   font-size: 40pt;
-  color: whitesmoke;
   letter-spacing: 25px;
-}
-
-#title::selection {
-  color: whitesmoke;
 }
 
 #welcome {
