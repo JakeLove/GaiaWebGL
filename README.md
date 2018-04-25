@@ -13,7 +13,7 @@ $ npm install concat-stream
 $ npm install cluster
 $ npm install pm2
 ```
-Place your GAIA sources files (csv format) into the *gaia_sources* folder. GAIA sources can be found [here](http://cdn.gea.esac.esa.int/Gaia/gaia_source/csv/)
+Place your GAIA sources files (csv format) into the *gaia_sources* folder. GAIA sources can be found [here](http://cdn.gea.esac.esa.int/Gaia/gdr1/gaia_source/csv/) or [http://cdn.gea.esac.esa.int/Gaia/gdr2/gaia_source/csv/]
 
 Run gaia.js to parse each csv file into its own new file containing a floatArray32 buffer 
 ```sh
